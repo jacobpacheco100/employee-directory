@@ -5,13 +5,21 @@ async function getUser() {
   let data = await res.json()
 
   for (i = 0; i < 12; i++) {
-    let name = `${data.results[i].name.first} ${data.results[i].name.last}`
-    let email = data.results[i].email
-    let location = data.results[i].location.state
-    let img = data.results[i].picture.large
-    let phone = data.results[i].phone
-    let address = `${data.results[i].location.street.number} ${data.results[i].location.street.name} ${data.results[0].location.postcode}`
-    let dob = `Birthday: 01/04/85`
+    let api = data.results[i]
+    let name = `${api.name.first} ${api.name.last}`
+    let email = api.email
+    let location = api.location.state
+    let img = api.picture.large
+    let phone = api.phone
+    let address = `${api.location.street.number} ${
+      api.location.city
+    } ${api.location.state.slice(0, 2).toUpperCase()} ${api.location.postcode}`
+    let dob = `Birthday: ${api.dob.date.slice(0, 4)}/${api.dob.date.slice(
+      5,
+      7
+    )}/${api.dob.date.slice(8, 10)}`
+
+    console.log(address)
 
     makeCard(name, email, location, img, phone, address, dob)
   }
