@@ -65,7 +65,7 @@ function modal(name, email, location, img, phone, address, dob) {
 
     <div class="space-y-1 ">
         <div
-        class="bg-[url(${img})] rounded-full bg-cover bg-center w-40 h-40 opacity-100 block mb-5"
+        class="bg-[url(${img})] rounded-full bg-cover bg-center w-40 h-40 opacity-100 block mx-auto mb-5"
         ></div>
         <h2 class="font-bold text-xl text-slate-600">${name}</h2>
         <p class="text-slate-500">${email}</p>
