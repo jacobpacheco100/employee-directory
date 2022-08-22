@@ -14,10 +14,8 @@ async function getUser() {
   console.log(location)
   console.log(img)
 
-  makeCard(name, email, location)
+  makeCard(name, email, location, img)
 }
-
-getUser()
 
 function makeCard(name, email, location, img) {
   const card = document.createElement('div')
@@ -26,7 +24,7 @@ function makeCard(name, email, location, img) {
     'h-40 bg-white border-2 border-slate-300 rounded-xl space-x-4 flex justify-start items-center px-5'
 
   card.innerHTML = `
-    <div class="w-32 h-32 rounded-full bg-[url(${img})] bg-no-repeat bg-cover"></div>
+    <div class="w-32 h-32 rounded-full bg-[url(${img})] bg-no-repeat bg-cover bg-center"></div>
         <div class="flex flex-col space-y-2">
         <h2 class="font-bold text-xl text-slate-700">
             ${name}
@@ -37,4 +35,8 @@ function makeCard(name, email, location, img) {
   `
 
   grid.appendChild(card)
+}
+
+for (i = 0; i <= 12; i++) {
+  getUser()
 }
