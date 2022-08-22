@@ -1,18 +1,20 @@
 const grid = document.querySelector('#grid')
 
 async function getUser() {
-  let res = await fetch('https://randomuser.me/api/')
+  let res = await fetch('https://randomuser.me/api/?results=12')
   let data = await res.json()
 
-  let name = `${data.results[0].name.first} ${data.results[0].name.last}`
-  let email = data.results[0].email
-  let location = data.results[0].location.state
-  let img = data.results[0].picture.large
-  let phone = data.results[0].phone
-  let address = `${data.results[0].location.street.number} ${data.results[0].location.street.name} ${data.results[0].location.postcode}`
-  let dob = `Birthday: 01/04/85`
+  for (i = 0; i < 12; i++) {
+    let name = `${data.results[i].name.first} ${data.results[i].name.last}`
+    let email = data.results[i].email
+    let location = data.results[i].location.state
+    let img = data.results[i].picture.large
+    let phone = data.results[i].phone
+    let address = `${data.results[i].location.street.number} ${data.results[i].location.street.name} ${data.results[0].location.postcode}`
+    let dob = `Birthday: 01/04/85`
 
-  makeCard(name, email, location, img, phone, address, dob)
+    makeCard(name, email, location, img, phone, address, dob)
+  }
 }
 
 function makeCard(name, email, location, img, phone, address, dob) {
@@ -82,6 +84,4 @@ function modal(name, email, location, img, phone, address, dob) {
   document.body.appendChild(modal)
 }
 
-for (i = 0; i <= 12; i++) {
-  getUser()
-}
+getUser()
